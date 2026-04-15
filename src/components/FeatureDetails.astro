@@ -1,0 +1,173 @@
+---
+// Section 3: Image left, detailed feature list right
+import PhoneMockup from '../components/PhoneMockup.astro';
+
+const features = [
+  {
+    title: "Verbal Live Video Feedback",
+    description:
+      "The agent sees issues and verbally provides feedback using a large-language model",
+  },
+  {
+    title: "Progress Report",
+    description:
+      "Keep track of user-consented videos, images, and body/equipment weights so users can see their progress",
+  },
+  {
+    title: "Body Analyzer",
+    description:
+      "Take body images and user questions to help them achieve their body goals by providing nutrition and exercise tips",
+  },
+  {
+    title: "3rd Party Integration",
+    description:
+      "Combine AI analysis with human trainer review or community support",
+  },
+];
+---
+
+<section id="details" class="section">
+  <div class="container">
+
+    <div class="details-layout">
+
+      <!-- Left: image -->
+      <div class="details-layout__media">
+        <PhoneMockup
+          videoSrc="/demos/demo2.gif"
+          width="320px"
+          isVideo={false}
+          videoStyle="object-position: left;"
+          notch={true}
+        />
+      </div>
+
+      <!-- Right: feature list -->
+      <div class="details-layout__text">
+        <h2>Features</h2>
+        <p>
+          Formify empowers everyone to train with confidence. It provides instant form feedback
+          for users without trainers and complements those with trainers by delivering accurate performance
+          data and progress tracking.
+        </p>
+
+        <ul class="feature-list">
+          {features.map(({ title, description }) => (
+            <li class="feature-list__item">
+              <div class="feature-list__dot" aria-hidden="true"></div>
+              <div>
+                <h4>{title}</h4>
+                <p>{description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .details-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .details-layout__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .details-layout__text h2 {
+    margin: 0;
+  }
+
+  .details-layout__text > p {
+    margin: 0;
+  }
+
+  /* Feature list */
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 0.5rem;
+  }
+
+  .feature-list__item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .feature-list__item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .feature-list__dot {
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    margin-top: 0.45rem;
+  }
+
+  .feature-list__item h4 {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 0.2rem;
+  }
+
+  .feature-list__item p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    max-width: none;
+    margin: 0;
+  }
+
+  /* Media frame (reuse same pattern as FeatureHighlight) */
+  .details-layout__media {
+    display: flex;
+    justify-content: center;
+  }
+
+  .media-frame {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+  }
+
+  .media-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .details-layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

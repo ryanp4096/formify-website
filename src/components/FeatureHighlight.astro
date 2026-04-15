@@ -1,0 +1,137 @@
+---
+// Section 2: Demo image right, description + benefit bullets left
+import PhoneMockup from '../components/PhoneMockup.astro';
+
+const benefits = [
+  "Human-Friendly Feedback",
+  "Easy Recording and Analysis",
+  "Exercise & Progress Tracking",
+];
+---
+
+<section id="features" class="section section--alt">
+  <div class="container">
+
+    <div class="split-layout">
+
+      <!-- Left: text + bullets -->
+      <div class="split-layout__text">
+        <h2>The Solution</h2>
+        <p>
+            An application that uses computer vision to analyze exercise videos, provide real-time feedback on form, and track users' progress to help them safely and effectively improve performance.
+        </p>
+
+        <ul class="benefit-list">
+          {benefits.map((item) => (
+            <li class="benefit-list__item">
+              <span class="benefit-list__icon" aria-hidden="true">
+                <!-- Green circle checkmark -->
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="11" cy="11" r="11" fill="#22C55E"/>
+                  <path d="M6.5 11.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Right: demo image -->
+      <div class="split-layout__media">
+        <PhoneMockup
+          videoSrc="/demos/demo1.gif"
+          width="320px"
+          isVideo={false}
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .split-layout__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .split-layout__text h2 {
+    margin: 0;
+  }
+
+  .split-layout__text p {
+    margin: 0;
+  }
+
+  /* Benefit bullet list */
+  .benefit-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  .benefit-list__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 1rem;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+
+  .benefit-list__icon {
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Media frame */
+  .split-layout__media {
+    display: flex;
+    justify-content: center;
+  }
+
+  .media-frame {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+  }
+
+  .media-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .split-layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    /* Stack image below text on mobile */
+    .split-layout__media {
+      order: -1;
+    }
+  }
+</style>

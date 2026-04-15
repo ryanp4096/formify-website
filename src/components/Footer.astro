@@ -1,0 +1,77 @@
+---
+const year = new Date().getFullYear();
+const links = [
+  {
+    name: "Instagram",
+    link: "https://www.instagram.com/getformify"
+  },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/company/formifyapp"
+  }
+]
+---
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__left">
+      <img src="logos/logo_icon.svg" width="32px"/>
+      <span class="footer__logo">Formify</span>
+    </div>
+    <div class="footer__right">
+      {links.map(({name, logo, link}) =>
+        <div>
+          <a href={link} target="_blank">
+            {
+              logo
+              ? <img src={logo} alt={name}></img>
+              : <span>{name}</span>
+            }
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: 3rem 1.5rem;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  
+  .footer__inner {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .footer__left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer__right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer__logo {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--color-text);
+    font-weight: 700;
+  }
+  
+  .footer p {
+    font-size: 0.875rem;
+    max-width: none;
+  }
+</style>

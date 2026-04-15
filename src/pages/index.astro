@@ -1,11 +1,37 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import FeatureHighlight from '../components/FeatureHighlight.astro';
+import FeatureDetails from '../components/FeatureDetails.astro';
+import Waitlist from '../components/Waitlist.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Formify"
+  description="Helping lifters train safer, and trainers scale smarter."
+>
+  <Navbar />
+  <main>
+    <!-- 1. Hero / About: logo, name, brief description -->
+    <Hero />
+
+    <hr />
+
+    <!-- 2. Demo image (right) + description & benefit bullets (left) -->
+    <FeatureHighlight />
+
+    <hr />
+
+    <!-- 3. Feature image (left) + detailed feature list (right) -->
+    <FeatureDetails />
+
+    <hr />
+
+    <!-- 4. Waitlist signup with form embed -->
+    <Waitlist />
+  </main>
+
+  <Footer />
 </Layout>
